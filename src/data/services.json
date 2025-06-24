@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "Car Detailing",
+        "description": "Comprehensive cleaning and restoration of your car's interior and exterior.",
+        "price": 199.99,
+        "duration": "2 hours"
+    },
+    {
+        "id": 2,
+        "name": "PPF (Paint Protection Film)",
+        "description": "Protect your car's paint with our high-quality paint protection film.",
+        "price": 799.99,
+        "duration": "1 day"
+    },
+    {
+        "id": 3,
+        "name": "Ceramic Coating",
+        "description": "Long-lasting protection for your car's paint with our ceramic coating service.",
+        "price": 499.99,
+        "duration": "1 day"
+    },
+    {
+        "id": 4,
+        "name": "Custom Builds",
+        "description": "Tailored modifications and custom builds to make your car unique.",
+        "price": "Varies",
+        "duration": "Depends on the project"
+    }
+]

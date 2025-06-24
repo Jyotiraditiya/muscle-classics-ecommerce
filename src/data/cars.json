@@ -1,0 +1,77 @@
+[
+  {
+    "name": "1969 Ford Mustang",
+    "year": 1969,
+    "model": "Mustang",
+    "price": 35000,
+    "images": [
+      "/assets/images/mustang1.jpg",
+      "/assets/images/mustang2.jpg"
+    ],
+    "modificationOptions": {
+      "bodyKits": ["Classic Body Kit", "Sport Body Kit"],
+      "exhaust": ["Dual Exhaust", "Single Exhaust"],
+      "suspension": ["Standard Suspension", "Sport Suspension"]
+    }
+  },
+  {
+    "name": "1970 Chevrolet Chevelle",
+    "year": 1970,
+    "model": "Chevelle",
+    "price": 45000,
+    "images": [
+      "/assets/images/chevelle1.jpg",
+      "/assets/images/chevelle2.jpg"
+    ],
+    "modificationOptions": {
+      "bodyKits": ["Muscle Body Kit", "Racing Body Kit"],
+      "exhaust": ["Performance Exhaust", "Standard Exhaust"],
+      "suspension": ["Standard Suspension", "Lowered Suspension"]
+    }
+  },
+  {
+    "name": "1967 Chevrolet Camaro",
+    "year": 1967,
+    "model": "Camaro",
+    "price": 40000,
+    "images": [
+      "/assets/images/camaro1.jpg",
+      "/assets/images/camaro2.jpg"
+    ],
+    "modificationOptions": {
+      "bodyKits": ["Z28 Body Kit", "RS Body Kit"],
+      "exhaust": ["Dual Exhaust", "Performance Exhaust"],
+      "suspension": ["Standard Suspension", "Performance Suspension"]
+    }
+  },
+  {
+    "name": "1971 Dodge Challenger",
+    "year": 1971,
+    "model": "Challenger",
+    "price": 38000,
+    "images": [
+      "/assets/images/challenger1.jpg",
+      "/assets/images/challenger2.jpg"
+    ],
+    "modificationOptions": {
+      "bodyKits": ["Classic Body Kit", "Racing Body Kit"],
+      "exhaust": ["Performance Exhaust", "Standard Exhaust"],
+      "suspension": ["Standard Suspension", "Sport Suspension"]
+    }
+  },
+  {
+    "name": "1966 Ford GT40",
+    "year": 1966,
+    "model": "GT40",
+    "price": 60000,
+    "images": [
+      "/assets/images/gt40_1.jpg",
+      "/assets/images/gt40_2.jpg"
+    ],
+    "modificationOptions": {
+      "bodyKits": ["Racing Body Kit"],
+      "exhaust": ["Performance Exhaust"],
+      "suspension": ["Standard Suspension"]
+    }
+  }
+]
