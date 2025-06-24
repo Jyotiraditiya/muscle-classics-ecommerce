@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import carImage from '../assets/images/car-banner.jpg'; // Example image path
+import bannerImg from '../assets/homepage.jpeg'; // Fixed image import
 
 const Home = () => {
     return (
         <div className="flex flex-col min-h-screen">
             <Navbar />
-            <header className="bg-cover bg-center h-96" style={{ backgroundImage: `url(${carImage})` }}>
+            <header className="bg-cover bg-center h-96" style={{ backgroundImage: `url(${bannerImg})` }}>
                 <div className="flex items-center justify-center h-full bg-black bg-opacity-50">
                     <h1 className="text-white text-4xl font-bold">Welcome to Muscle Classics</h1>
                 </div>
