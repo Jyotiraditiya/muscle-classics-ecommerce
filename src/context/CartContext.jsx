@@ -29,3 +29,6 @@ export const CartProvider = ({ children }) => {
         </CartContext.Provider>
     );
 };
+
+// ✅ Add this so Cars.jsx can import it
+export { CartContext };
