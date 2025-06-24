@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import CarCard from '../components/CarCard';
 import ServiceCard from '../components/ServiceCard';
 import { CartContext } from '../context/CartContext';
+import heroImg from '../assets/photo-1628149682149-3eb3c488cfb5.avif';
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
@@ -15,24 +14,24 @@ const fadeInUp = {
 const featuredCars = [
     {
         id: 1,
-        img: "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=400&q=80",
-        alt: "Mustang",
-        title: "1967 Ford Mustang",
-        desc: "A true American classic with modern upgrades.",
+        img: 'https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=400&q=80',
+        alt: 'Mustang',
+        title: '1967 Ford Mustang',
+        desc: 'A true American classic with modern upgrades.',
     },
     {
         id: 2,
-        img: "https://images.unsplash.com/photo-1511918984145-48de785d4c4e?auto=format&fit=crop&w=400&q=80",
-        alt: "Camaro",
-        title: "1969 Chevrolet Camaro",
-        desc: "Iconic muscle, restored to perfection.",
+        img: 'https://images.unsplash.com/photo-1511918984145-48de785d4c4e?auto=format&fit=crop&w=400&q=80',
+        alt: 'Camaro',
+        title: '1969 Chevrolet Camaro',
+        desc: 'Iconic muscle, restored to perfection.',
     },
     {
         id: 3,
-        img: "https://images.unsplash.com/photo-1462392246754-28dfa2df8e6b?auto=format&fit=crop&w=400&q=80",
-        alt: "Challenger",
-        title: "1970 Dodge Challenger",
-        desc: "Bold looks and roaring performance.",
+        img: 'https://images.unsplash.com/photo-1462392246754-28dfa2df8e6b?auto=format&fit=crop&w=400&q=80',
+        alt: 'Challenger',
+        title: '1970 Dodge Challenger',
+        desc: 'Bold looks and roaring performance.',
     }
 ];
 
@@ -41,8 +40,7 @@ const Home = () => {
 
     return (
         <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-50 to-white">
-            <Navbar />
-            <header className="bg-cover bg-center h-96 relative" style={{ backgroundImage: `url(${bannerImg})` }}>
+            <header className="bg-cover bg-center h-96 relative" style={{ backgroundImage: `url(${heroImg})` }}>
                 <div className="flex items-center justify-center h-full bg-black bg-opacity-60">
                     <motion.h1
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -71,7 +69,6 @@ const Home = () => {
                     </motion.div>
                 </motion.section>
 
-                {/* Featured Cars Section */}
                 <motion.section
                     className="my-12"
                     initial="hidden"
@@ -100,7 +97,6 @@ const Home = () => {
                     </div>
                 </motion.section>
 
-                {/* Services Section */}
                 <motion.section
                     className="my-8"
                     initial="hidden"
@@ -123,7 +119,6 @@ const Home = () => {
                     </motion.div>
                 </motion.section>
 
-                {/* Booking Form Link */}
                 <motion.section
                     className="my-8 text-center"
                     initial="hidden"
@@ -137,7 +132,6 @@ const Home = () => {
                     </Link>
                 </motion.section>
 
-                {/* Testimonials Section */}
                 <motion.section
                     className="my-12 bg-gray-100 rounded-lg p-8"
                     initial="hidden"
@@ -151,15 +145,15 @@ const Home = () => {
                         {[
                             {
                                 quote: '"Absolutely love my restored Mustang! The team at Muscle Classics exceeded my expectations."',
-                                author: "- Alex R."
+                                author: '- Alex R.'
                             },
                             {
                                 quote: '"Professional service and attention to detail. Highly recommend their ceramic coating."',
-                                author: "- Priya S."
+                                author: '- Priya S.'
                             },
                             {
                                 quote: '"Great selection of classic cars and friendly staff. Will be back for my next project!"',
-                                author: "- Mike D."
+                                author: '- Mike D.'
                             }
                         ].map((t, idx) => (
                             <motion.div
@@ -177,7 +171,6 @@ const Home = () => {
                     </div>
                 </motion.section>
             </main>
-            <Footer />
         </div>
     );
 };
