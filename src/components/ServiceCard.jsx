@@ -2,11 +2,21 @@ import React from 'react';
 
 const ServiceCard = ({ service }) => {
     return (
-        <div className="border rounded-lg shadow-lg p-4 m-4">
-            <h2 className="text-xl font-bold">{service.name}</h2>
-            <p className="text-gray-700">{service.description}</p>
-            <p className="text-lg font-semibold">Price: ${service.price}</p>
-            <img src={service.image} alt={service.name} className="w-full h-48 object-cover rounded" />
+        <div className="service-card-horizontal">
+            <div className="service-card-content">
+                <h3 className="service-card-title">{service.name}</h3>
+                <p className="service-card-description">{service.description}</p>
+                <div className="service-card-details">
+                    <div className="service-detail-item">
+                        <span className="detail-label">Price:</span>
+                        <span className="detail-value">${service.price}</span>
+                    </div>
+                    <div className="service-detail-item">
+                        <span className="detail-label">Duration:</span>
+                        <span className="detail-value">{service.duration}</span>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

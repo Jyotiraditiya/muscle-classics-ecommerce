@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import bookingImage from '../assets/photo-1605571200256-9bf9c42b8f54.avif';
 
 const BookingForm = () => {
     const [formData, setFormData] = useState({
@@ -48,73 +49,82 @@ const BookingForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-4 border rounded shadow">
-            <h2 className="text-xl font-bold mb-4">Book a Service</h2>
-            <div className="mb-4">
-                <label className="block mb-1" htmlFor="name">Name</label>
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className={`border rounded w-full p-2 ${errors.name ? 'border-red-500' : ''}`}
-                />
-                {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+        <form onSubmit={handleSubmit} className="booking-form">
+            <div className="booking-form-layout">
+                <div className="booking-form-media">
+                    <img src={bookingImage} alt="Classic muscle car in workshop" />
+                </div>
+                <div className="booking-form-body">
+                    <h2>Book a Service</h2>
+                    <div className="booking-form-fields">
+                        <div className="form-group">
+                            <label htmlFor="name">Name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                className={errors.name ? 'error' : ''}
+                            />
+                            {errors.name && <span className="error-message">{errors.name}</span>}
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                className={errors.email ? 'error' : ''}
+                            />
+                            {errors.email && <span className="error-message">{errors.email}</span>}
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="service">Service</label>
+                            <select
+                                id="service"
+                                name="service"
+                                value={formData.service}
+                                onChange={handleChange}
+                                className={errors.service ? 'error' : ''}
+                            >
+                                <option value="">Select a service</option>
+                                <option value="detailing">Car Detailing</option>
+                                <option value="ppf">PPF (Paint Protection Film)</option>
+                                <option value="ceramic">Ceramic Coating</option>
+                                <option value="custom">Custom Builds</option>
+                            </select>
+                            {errors.service && <span className="error-message">{errors.service}</span>}
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="date">Preferred Date</label>
+                            <input
+                                type="date"
+                                id="date"
+                                name="date"
+                                value={formData.date}
+                                onChange={handleChange}
+                                className={errors.date ? 'error' : ''}
+                            />
+                            {errors.date && <span className="error-message">{errors.date}</span>}
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="message">Message (Optional)</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            value={formData.message}
+                            onChange={handleChange}
+                            rows="4"
+                            placeholder="Tell us about your service needs..."
+                        />
+                    </div>
+                    <button type="submit">Book Service</button>
+                </div>
             </div>
-            <div className="mb-4">
-                <label className="block mb-1" htmlFor="email">Email</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className={`border rounded w-full p-2 ${errors.email ? 'border-red-500' : ''}`}
-                />
-                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
-            </div>
-            <div className="mb-4">
-                <label className="block mb-1" htmlFor="service">Service</label>
-                <select
-                    id="service"
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className={`border rounded w-full p-2 ${errors.service ? 'border-red-500' : ''}`}
-                >
-                    <option value="">Select a service</option>
-                    <option value="detailing">Car Detailing</option>
-                    <option value="ppf">PPF (Paint Protection Film)</option>
-                    <option value="ceramic">Ceramic Coating</option>
-                    <option value="custom">Custom Builds</option>
-                </select>
-                {errors.service && <p className="text-red-500 text-sm">{errors.service}</p>}
-            </div>
-            <div className="mb-4">
-                <label className="block mb-1" htmlFor="date">Preferred Date</label>
-                <input
-                    type="date"
-                    id="date"
-                    name="date"
-                    value={formData.date}
-                    onChange={handleChange}
-                    className={`border rounded w-full p-2 ${errors.date ? 'border-red-500' : ''}`}
-                />
-                {errors.date && <p className="text-red-500 text-sm">{errors.date}</p>}
-            </div>
-            <div className="mb-4">
-                <label className="block mb-1" htmlFor="message">Message</label>
-                <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="border rounded w-full p-2"
-                    rows="4"
-                />
-            </div>
-            <button type="submit" className="bg-blue-500 text-white rounded px-4 py-2">Submit</button>
         </form>
     );
 };

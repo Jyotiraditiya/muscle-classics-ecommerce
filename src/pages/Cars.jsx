@@ -46,13 +46,19 @@ const Cars = () => {
     };
 
     return (
-        <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4">Cars for Sale</h1>
-            <CarFilter filters={filters} onFilterChange={handleFilterChange} />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-                {filteredCars.map(car => (
-                    <CarCard key={car.id} car={car} onAddToCart={addToCart} />
-                ))}
+        <div className="site-container" style={{padding:'24px 16px'}}>
+            <h1 style={{fontSize:22,fontWeight:700,marginBottom:12}}>Cars for Sale</h1>
+            <div className="container-flex">
+                <aside className="sidebar" style={{width:280}}>
+                    <CarFilter filters={filters} onFilterChange={handleFilterChange} />
+                </aside>
+                <div style={{flex:1}}>
+                    <div className="grid-3" style={{marginTop:8}}>
+                        {filteredCars.map((car, idx) => (
+                            <CarCard key={car.name || idx} car={car} onAddToCart={addToCart} />
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     );

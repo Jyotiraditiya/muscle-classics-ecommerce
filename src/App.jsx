@@ -9,9 +9,13 @@ const App = () => {
   return (
     <CartProvider>
       <Router>
-        <Navbar />
-        <Routes />
-        <Footer />
+        <div className="app-shell">
+          <Navbar />
+          <main className="app-main">
+            <Routes />
+          </main>
+          <Footer />
+        </div>
       </Router>
     </CartProvider>
   );

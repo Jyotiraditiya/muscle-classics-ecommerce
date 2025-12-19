@@ -5,15 +5,21 @@ import servicesData from '../data/services.json';
 
 const Services = () => {
     return (
-        <div className="container mx-auto p-4">
-            <h1 className="text-3xl font-bold mb-6">Our Services</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="services-page">
+            <div className="services-header">
+                <h1>Our Services</h1>
+                <p>Comprehensive solutions for your classic and muscle car needs</p>
+            </div>
+            <div className="services-list">
                 {servicesData.map((service) => (
                     <ServiceCard key={service.id} service={service} />
                 ))}
             </div>
-            <h2 className="text-2xl font-semibold mt-10 mb-4">Book a Service</h2>
-            <BookingForm />
+            <div className="booking-section">
+                <h2>Book a Service Today</h2>
+                <p>Reserve your service appointment with us</p>
+                <BookingForm />
+            </div>
         </div>
     );
 };

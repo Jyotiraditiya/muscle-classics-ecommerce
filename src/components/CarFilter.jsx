@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const CarFilter = ({ onFilterChange }) => {
+const CarFilter = ({ filters: initialFilters = {}, onFilterChange }) => {
     const [filters, setFilters] = useState({
         brand: '',
         year: '',
@@ -9,52 +9,49 @@ const CarFilter = ({ onFilterChange }) => {
         price: ''
     });
 
+    useEffect(() => {
+        setFilters(prev => ({ ...prev, ...initialFilters }));
+    }, [initialFilters]);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFilters({
-            ...filters,
-            [name]: value
-        });
-        onFilterChange({ ...filters, [name]: value });
+        const next = { ...filters, [name]: value };
+        setFilters(next);
+        if (onFilterChange) onFilterChange(next);
     };
 
     return (
-        <div className="flex flex-col space-y-4 p-4">
-            <h2 className="text-xl font-bold">Filter Cars</h2>
-            <select name="brand" onChange={handleChange} className="border p-2">
-                <option value="">Select Brand</option>
+        <div className="filters">
+            <h3 style={{marginBottom:8,fontWeight:700}}>Filters</h3>
+            <label>Brand</label>
+            <select name="brand" value={filters.brand} onChange={handleChange}>
+                <option value="">All Brands</option>
                 <option value="Ford">Ford</option>
                 <option value="Chevrolet">Chevrolet</option>
                 <option value="Dodge">Dodge</option>
-                {/* Add more brands as needed */}
             </select>
-            <select name="year" onChange={handleChange} className="border p-2">
-                <option value="">Select Year</option>
-                <option value="2022">2022</option>
-                <option value="2021">2021</option>
-                <option value="2020">2020</option>
-                {/* Add more years as needed */}
+
+            <label>Year</label>
+            <select name="year" value={filters.year} onChange={handleChange}>
+                <option value="">Any Year</option>
+                <option value="1971">1971</option>
+                <option value="1970">1970</option>
+                <option value="1969">1969</option>
+                <option value="1967">1967</option>
             </select>
-            <input
-                type="text"
-                name="model"
-                placeholder="Model"
-                onChange={handleChange}
-                className="border p-2"
-            />
-            <select name="type" onChange={handleChange} className="border p-2">
-                <option value="">Select Type</option>
+
+            <label>Model</label>
+            <input type="text" name="model" placeholder="Model" value={filters.model} onChange={handleChange} />
+
+            <label>Type</label>
+            <select name="type" value={filters.type} onChange={handleChange}>
+                <option value="">Any Type</option>
                 <option value="Muscle">Muscle</option>
                 <option value="Classic">Classic</option>
-                {/* Add more types as needed */}
             </select>
-            <input
-                type="number"
-                name="price"
-                placeholder="Max Price"
-                onChange={handleChange}
-                className="border p-2"
-            />
+
+            <label>Max Price</label>
+            <input type="number" name="price" placeholder="Max Price" value={filters.price} onChange={handleChange} />
         </div>
     );
 };
