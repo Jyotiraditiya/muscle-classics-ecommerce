@@ -4,6 +4,7 @@ import { CartProvider } from './context/CartContext';
 import Routes from './routes';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import CargeekChat from './components/CargeekChat';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
             <Routes />
           </main>
           <Footer />
+          <CargeekChat />
         </div>
       </Router>
     </CartProvider>

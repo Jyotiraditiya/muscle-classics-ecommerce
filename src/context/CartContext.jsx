@@ -10,7 +10,18 @@ export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
 
     const addToCart = (item) => {
-        setCartItems((prevItems) => [...prevItems, item]);
+        const id = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+        const normalized = {
+            id,
+            name: item.name || item.title || 'Car',
+            model: item.model || item.alt || '',
+            year: item.year || '',
+            price: item.price || 0,
+            image: (item.image || (Array.isArray(item.images) && item.images[0]) || null),
+            images: item.images || [],
+            ...item
+        };
+        setCartItems((prevItems) => [...prevItems, normalized]);
     };
 
     const removeFromCart = (id) => {
@@ -22,12 +33,11 @@ export const CartProvider = ({ children }) => {
     };
 
     const totalItems = cartItems.length;
+    const totalAmount = cartItems.reduce((sum, item) => sum + (item.price || 0), 0);
 
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, totalItems }}>
+        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, totalItems, totalAmount }}>
             {children}
         </CartContext.Provider>
     );
 };
-
-export { CartContext };

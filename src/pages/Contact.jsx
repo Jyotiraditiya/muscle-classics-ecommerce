@@ -26,7 +26,6 @@ const Contact = () => {
         e.preventDefault();
         const validationErrors = validateForm();
         if (Object.keys(validationErrors).length === 0) {
-            // Handle form submission (e.g., send data to an API)
             console.log('Form submitted:', formData);
             setFormData({ name: '', email: '', message: '' });
             setErrors({});
@@ -36,104 +35,95 @@ const Contact = () => {
     };
 
     return (
-        <div className="contact-page">
-            <div className="contact-hero">
-                <div className="site-container contact-hero-content">
-                    <p className="eyebrow">Talk to our shop</p>
-                    <h1>Contact Muscle Classics</h1>
-                    <p className="lead">Drop us a line for build quotes, inventory inquiries, or a visit to the garage.</p>
-                    <div className="contact-badges">
-                        <span>Same-day call back</span>
-                        <span>Secure bookings</span>
-                        <span>US-based team</span>
+        <section className="contact-page">
+            <div className="site-container">
+                <header className="contact-hero">
+                    <p className="contact-eyebrow">Contact</p>
+                    <h1>Talk builds, bookings, and sourcing</h1>
+                    <p className="contact-lede">Tell us what you are hunting for, ask about an existing listing, or book time to see the showroom in person.</p>
+                    <div className="contact-meta">
+                        <span>Replies within 1-2 business days</span>
+                        <span>Private viewings by appointment</span>
                     </div>
+                </header>
+
+                <div className="contact-grid">
+                    <div className="contact-form-card">
+                        <h2>Send a message</h2>
+                        <p className="contact-form-copy">Share the car, era, or budget you have in mind. We will respond with options and next steps.</p>
+                        <form onSubmit={handleSubmit} className="contact-form">
+                            <div className="contact-form-row">
+                                <div className="contact-field">
+                                    <label htmlFor="name">Name</label>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        aria-invalid={Boolean(errors.name)}
+                                    />
+                                    {errors.name && <p className="contact-error">{errors.name}</p>}
+                                </div>
+                                <div className="contact-field">
+                                    <label htmlFor="email">Email</label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        aria-invalid={Boolean(errors.email)}
+                                    />
+                                    {errors.email && <p className="contact-error">{errors.email}</p>}
+                                </div>
+                            </div>
+
+                            <div className="contact-field">
+                                <label htmlFor="message">Message</label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    rows="5"
+                                    aria-invalid={Boolean(errors.message)}
+                                />
+                                {errors.message && <p className="contact-error">{errors.message}</p>}
+                            </div>
+
+                            <button type="submit" className="contact-submit">Send Message</button>
+                        </form>
+                    </div>
+
+                    <aside className="contact-info">
+                        <div className="contact-card">
+                            <span className="contact-card__badge">Showroom</span>
+                            <h3>Visit Muscle Classics</h3>
+                            <p>212 Heritage Ave, Suite 4<br />Detroit, MI 48201</p>
+                            <p className="contact-card__meta">Private tours by appointment.</p>
+                        </div>
+
+                        <div className="contact-card">
+                            <span className="contact-card__badge">Talk to us</span>
+                            <h3>Call or email</h3>
+                            <p>(313) 555-0168<br />sales@muscleclassics.com</p>
+                            <p className="contact-card__meta">Mon–Sat, 9a–6p EST</p>
+                        </div>
+
+                        <div className="contact-card">
+                            <span className="contact-card__badge">Services</span>
+                            <h3>What we can help with</h3>
+                            <ul>
+                                <li>Vehicle sourcing & inspections</li>
+                                <li>Consignment & valuations</li>
+                                <li>Restoration scheduling</li>
+                            </ul>
+                        </div>
+                    </aside>
                 </div>
             </div>
-
-            <div className="site-container contact-layout">
-                <div className="contact-info-card">
-                    <div className="contact-info-header">
-                        <h3>Visit the garage</h3>
-                        <p>We restore, protect, and ship classics nationwide. Call ahead so we can prep your tour.</p>
-                    </div>
-
-                    <div className="contact-details-grid">
-                        <div className="contact-detail">
-                            <span className="label">Address</span>
-                            <span>742 Muscle Ave, Detroit, MI 48201</span>
-                        </div>
-                        <div className="contact-detail">
-                            <span className="label">Phone</span>
-                            <span>(313) 555-0188</span>
-                        </div>
-                        <div className="contact-detail">
-                            <span className="label">Email</span>
-                            <span>team@muscleclassics.com</span>
-                        </div>
-                        <div className="contact-detail">
-                            <span className="label">Hours</span>
-                            <span>Mon–Sat • 9am–6pm EST</span>
-                        </div>
-                    </div>
-
-                    <div className="contact-note">
-                        <strong>Need immediate help?</strong> Text us a photo of your car to the shop line for a quick estimate.
-                    </div>
-                </div>
-
-                <form className="contact-form" onSubmit={handleSubmit}>
-                    <div className="contact-form-header">
-                        <h3>Send a message</h3>
-                        <p>We respond within one business day.</p>
-                    </div>
-
-                    <div className="contact-form-grid">
-                        <div className="form-group">
-                            <label htmlFor="name">Name</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                className={errors.name ? 'has-error' : ''}
-                            />
-                            {errors.name && <span className="error-text">{errors.name}</span>}
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                className={errors.email ? 'has-error' : ''}
-                            />
-                            {errors.email && <span className="error-text">{errors.email}</span>}
-                        </div>
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="message">Message</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            value={formData.message}
-                            onChange={handleChange}
-                            rows="5"
-                            className={errors.message ? 'has-error' : ''}
-                        />
-                        {errors.message && <span className="error-text">{errors.message}</span>}
-                    </div>
-
-                    <div className="contact-actions">
-                        <button type="submit">Send message</button>
-                        <p className="contact-meta">By sending, you agree to our response policy.</p>
-                    </div>
-                </form>
-            </div>
-        </div>
+        </section>
     );
 };
 

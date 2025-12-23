@@ -41,26 +41,42 @@ const Cars = () => {
         applyFilters();
     }, [filters]);
 
-    const handleFilterChange = (newFilters) => {
-        setFilters(prevFilters => ({ ...prevFilters, ...newFilters }));
-    };
-
     return (
-        <div className="site-container" style={{padding:'24px 16px'}}>
-            <h1 style={{fontSize:22,fontWeight:700,marginBottom:12}}>Cars for Sale</h1>
-            <div className="container-flex">
-                <aside className="sidebar" style={{width:280}}>
-                    <CarFilter filters={filters} onFilterChange={handleFilterChange} />
-                </aside>
-                <div style={{flex:1}}>
-                    <div className="grid-3" style={{marginTop:8}}>
-                        {filteredCars.map((car, idx) => (
-                            <CarCard key={car.name || idx} car={car} onAddToCart={addToCart} />
-                        ))}
+        <section className="cars-page">
+            <div className="site-container">
+                <header className="cars-header">
+                    <p className="cars-eyebrow">Showroom</p>
+                    <div className="cars-header__row">
+                        <h1>Shop Cars</h1>
+                        <span className="cars-count">{filteredCars.length} listed</span>
+                    </div>
+                    <p className="cars-lede">Curated American muscle and vintage classics ready for your garage.</p>
+                </header>
+
+                <div className="cars-layout">
+                    <aside className="cars-filter-panel">
+                        <CarFilter filters={filters} onFilterChange={setFilters} />
+                    </aside>
+
+                    <div className="cars-grid">
+                        {filteredCars.length > 0 ? (
+                            filteredCars.map((car) => (
+                                <CarCard
+                                    key={car.name}
+                                    car={car}
+                                    onAddToCart={() => addToCart(car)}
+                                />
+                            ))
+                        ) : (
+                            <div className="cars-empty">
+                                <p className="cars-empty__title">No cars found</p>
+                                <p className="cars-empty__copy">Try adjusting the filters or clearing the max price.</p>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
